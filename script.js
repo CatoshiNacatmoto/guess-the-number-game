@@ -5,6 +5,8 @@ const guessInput = document.querySelector('.guess');
 const message = document.querySelector('.message');
 const highscore = document.querySelector('.highscore');
 const score = document.querySelector('.score');
+const background = document.querySelector('body');
+const number = document.querySelector('.number');
 
 const correctNum = Math.trunc(Math.random() * 20) + 1;
 
@@ -20,14 +22,19 @@ checkNumber.addEventListener('click', () => {
     //print highscore
     highscore.innerHTML = point;
     //background turn green
+    background.style.backgroundColor = '#60b347';
+
+    //show the mystery number
+    number.innerHTML = correctNum;
   } else {
+    //score -1 after each false guess
     point--;
+
     score.innerHTML = point;
     //print message if to low or to high
     message.innerHTML = guestNum < correctNum ? 'too low' : 'too high';
-    //score -1 after each false guess
 
     //reseting the field after fail attempt
-    // guessInput.value = '';
+    guessInput.value = '';
   }
 });
